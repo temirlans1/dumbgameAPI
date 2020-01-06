@@ -38,16 +38,10 @@ def api_all():
 
 @app.route('/api/v1/resources/records/', methods=['POST'])
 def api_insert_record():
-    if 'name' in request.args:
-        name = request.args.get("name")
-    else :
-        return "Error: No name field provided. Please specify a name."
-    
-    if 'score' in request.args:
-        score = request.args.get("score")
-    else :
-        return "Error: No score field provided. Please specify a score."
-    
+    print(request.json['params'])
+    name = request.json['params']['name']
+    score = request.json['params']['score']
+    print(name + " " + score)
     record = []
     record.append(name)
     record.append(score)
